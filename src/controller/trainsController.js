@@ -3,8 +3,8 @@ import TrainsService from "../service/trainsService.js";
 class TrainsController {
     static createTrainController = async (req, res) => {
         try {
-            const trainData = req.body;
-            const newTrain = await TrainsService.createTrainService(trainData);
+            const { trainData, stationMappings } = req.body;
+            const newTrain = await TrainsService.createTrainService(trainData, stationMappings);
             res.status(201).json(newTrain);
         } catch (error) {
             res.status(500).json({ error: error.message });

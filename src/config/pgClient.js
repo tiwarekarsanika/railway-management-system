@@ -3,9 +3,9 @@ import dotenv from 'dotenv';
 
 dotenv.config();
 
-const { Client } = pkg;
+const { Pool } = pkg;
 
-const client = new Client({
+const client = new Pool({
     connectionString: process.env.SUPABASE_DB_URL, 
 });
 

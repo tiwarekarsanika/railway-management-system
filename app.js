@@ -3,6 +3,8 @@ import cors from "cors";
 import morgan from "morgan";
 import dotenv from "dotenv";
 import helmet from "helmet";
+import jwt from "jsonwebtoken";
+import routes from './src/routes/indexRoutes.js'
 
 dotenv.config(); 
 const app = express();
@@ -15,9 +17,6 @@ app.use(helmet({
 }));
 app.use(morgan('dev'));
 
-// app.use(cookieParser());
-
-// Routes
-// app.use('/api', routes);
+app.use('/api', routes);
 
 export default app;

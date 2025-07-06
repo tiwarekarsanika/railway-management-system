@@ -1,22 +1,22 @@
 import { createClient } from '@supabase/supabase-js';
+import dotenv from 'dotenv';
 
-const supabaseUrl = process.env.SUPABASE_URL || '';
-const supabaseAnonKey = process.env.SUPABASE_ANON_KEY || '';
+dotenv.config();
 
-const supabase = createClient(supabaseUrl, supabaseAnonKey);
+class SupabaseClient {
+    static instance;
 
-const checkDBConnection = async () => {
-    try {
-        const { data, error } = await supabase.from('users').select('*').limit(1);
-        if (error) {
-            console.log("Supabase database connection established, but 'users' table does not exist.");
-        } else {
-            console.log("Supabase database connected successfully!");
+    constructor() {
+        if (!SupabaseClient.instance) {
+            this.supabase = createClient(process.env.SUPABASE_URL, process.env.SUPABASE_ANON_KEY);
+            SupabaseClient.instance = this;
         }
-    } catch (err) {
-        console.error("Supabase database connection failed:", err.message);
-        process.exit(1);
+        return SupabaseClient.instance;
     }
-};
 
-export { supabase, checkDBConnection };
+    getClient() {
+        return this.supabase;
+    }
+}
+
+export default new SupabaseClient();

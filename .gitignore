@@ -1,0 +1,12 @@
+# Node modules
+node_modules/
+
+# Environment variables
+.env
+.env.* # If you have multiple env files like .env.development, .env.production
+
+# Optional: OS & Editor-specific files
+.DS_Store
+*.log
+*.swp
+.vscode/

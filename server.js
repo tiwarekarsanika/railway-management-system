@@ -1,16 +1,19 @@
-import express from 'express';
-import dotenv from 'dotenv'; 
+import app from './app.js';
+import { checkDBConnection } from './src/config/supabaseClient.js';
+import initialiseDB from './src/database/initialiseDB.js';
 
-dotenv.config(); 
-const app = express();
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 5000;
 
-// Define a basic route
-app.get('/', (req, res) => {
-    res.send('Hello from Express!');
-});
-
-// Start the server
-app.listen(PORT, () => {
-    console.log(`Server running on port ${PORT}`);
-});
+(async () => {
+    try {
+        
+        await checkDBConnection();
+        // await initialiseDB();
+        app.listen(PORT, () => {
+            console.log(`Server running on port ${PORT}`);
+        });
+        
+    } catch (error) {
+        console.error('Server failed to start:', error);
+    }
+})();

@@ -1,7 +1,7 @@
 const createTrainStationsTable = `
     CREATE TABLE IF NOT EXISTS train_stations (
         mapping_id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
-        train_id UUID REFERENCES trains(train_id),
+        train_code UUID REFERENCES trains(train_code),
         station_name TEXT NOT NULL,
         arrival_time TIMESTAMP NOT NULL,
         departure_time TIMESTAMP NOT NULL,

@@ -12,7 +12,7 @@ class UserController {
 
     static registerUserController = async(req, res) => {
         try {
-            const user = await UsersService.resgisterUserService(req.body);
+            const user = await UsersService.registerUserService(req.body);
             res.status(201).json(user);
         } catch (error) {
             res.status(400).json({ error: error.message });

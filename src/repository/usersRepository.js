@@ -22,6 +22,7 @@ class UsersRepository {
         const { data, error } = await supabase
             .from('users')
             .insert([userData])
+            .select()
             .single();
 
         if (error) {
@@ -50,7 +51,7 @@ class UsersRepository {
             .from('users')
             .select('*')
             .eq('email', email)
-            .single();
+            .maybeSingle();
 
         if (error) {
             throw new Error(`Error fetching user by email: ${error.message}`);
@@ -60,4 +61,4 @@ class UsersRepository {
     }
 }
 
-export default new UsersRepository();
+export default UsersRepository;

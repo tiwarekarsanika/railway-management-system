@@ -6,7 +6,7 @@ dotenv.config();
 const { Client } = pkg;
 
 const client = new Client({
-    connectionString: process.env.SUPABASE_URL, 
+    connectionString: process.env.SUPABASE_DB_URL, 
 });
 
 client.connect()

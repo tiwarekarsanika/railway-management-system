@@ -3,10 +3,9 @@ import cors from "cors";
 import morgan from "morgan";
 import dotenv from "dotenv";
 import helmet from "helmet";
-import jwt from "jsonwebtoken";
 import routes from './src/routes/indexRoutes.js'
 
-dotenv.config(); 
+dotenv.config();
 const app = express();
 
 app.use(cors());

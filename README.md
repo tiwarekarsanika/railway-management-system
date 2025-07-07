@@ -20,16 +20,16 @@ Supports:
 ## Folder Structure
 
 src/
-├── config/ # Environment setup and DB clients
-├── controller/ # Handles request/response logic
-├── database/ # Table creation scripts
-├── middleware/ # JWT, admin auth
-├── models/ # Data models 
-├── repository/ # DB access logic 
-├── routes/ # Express route definitions
-├── schemas/ # Table creation schemas
-├── service/ # Business logic
-├── utils/ # Test scripts (e.g., race condition test)
+- config/ # Environment setup and DB clients
+- controller/ # Handles request/response logic
+- database/ # Table creation scripts
+- middleware/ # JWT, admin auth
+- models/ # Data models 
+- repository/ # DB access logic 
+- routes/ # Express route definitions
+- schemas/ # Table creation schemas
+- service/ # Business logic
+- utils/ # Test scripts (e.g., race condition test)
 
 > ✅ Clean modular architecture using the **repository design pattern** to separate DB logic and business logic.
 
@@ -46,21 +46,21 @@ npm install
 
 3. Set up environment variables:
 - Copy `.env.example` to `.env` and fill in the values:
-  ```
+
   SUPABASE_DB_URL=your_database_url
   SUPABASE_API_URL=your_api_url
   SUPABASE_ANON_KEY=your_annonymous_key
   JWT_SECRET=your_jwt_secret
   ADMIN_API_KEY=your_admin_key
   PORT=port_number
-  ```
-```
+
 
 4. Run database table creation script:
 node src/database/initialiseDB.js
 
 5. Start the development server:
 nodemon server.js
+```
 
 > **Do not push your `.env` file**. Keep it in `.gitignore`.
 
@@ -85,8 +85,10 @@ Booking service uses PostgreSQL `SELECT ... FOR UPDATE` row locking inside a tra
 
 Test script in `src/utils/bookingTest.js` simulates 6 concurrent requests when only 5 seats are available. Response: 5 succeeded, 1 failed — confirming race condition handling works.
 
-![Concurrency Test 1](./assets/concurrency1.png)
-![Concurrency Test 2](./assets/concurrency2.png)
+<div style="display: flex; gap: 10px;">
+  <img src="./assets/concurrency1.png" alt="Concurrency Test 1" width="45%">
+  <img src="./assets/concurrency2.png" alt="Concurrency Test 2" width="45%">
+</div>
 
 ## Assumptions
 

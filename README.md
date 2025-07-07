@@ -33,7 +33,7 @@ src/
 
 > ✅ Clean modular architecture using the **repository design pattern** to separate DB logic and business logic.
 
-### 4. **How to Setup**
+## How to Setup
 
 ```markdown
 ## Setup Instructions
